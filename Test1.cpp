@@ -1,20 +1,19 @@
 #include <iostream>
 
-int Random(int _min, int _max) {
-
-    return rand() % (_max - _min) + _min; 
-
+int Random(int MIN, int MAX) 
+{
+    return rand() % (MAX - MIN) + MIN;
 }
 
 
-void Swap(int &_value1, int &_value2) {
-
-    int _tmp = _value1;
-    _value1 = _value2;
-    _value2 = _tmp;
-
+void Swap(int &n1, int &n2) 
+{
+    int t = n1;
+    n1 = n2;
+    n2 = t;
 }
 
+/*
 void Short(int *_array, int _length) {
 
     for(int i = 0; i < _length; i++)
@@ -33,92 +32,92 @@ int MinIndex(int *_array, int _start, int _length) {
     return _index;
 
 }
+*/
 
-void FillRandomly(int *_array, int _min, int _max, int _length) {
-
-    for(int i = 0; i < _length; i++) 
-        _array[i] = Random(_min, _max);
-
+void FillRandom(int *array, int MIN, int MAX, int length) 
+{
+    for(int i = 0; i < length; i++) 
+        array[i] = Random(MIN, MAX);
 }
 
-void UserFillArray(int *_array, int _length) {
+void UserFillArray(int *array, int length) {
 
-    for(int i = 0; i < _length; i++) {
+    for(int i = 0; i < length; i++) {
         
         std::cout << "Enter the value n " << i+1 << " of the array: ";
-        std::cin >> _array[i]; 
+        std::cin >> array[i]; 
 
     }
 
 }
 
-int GetBufferInput(char *_buffer, int _maxLength) {
+int GetBufferInput(char *buffer, int maxLength) {
 
-    int _length = 0;
+    int length = 0;
 
-    for(int i = 0; i < _maxLength; i++) {
+    for(int i = 0; i < maxLength; i++) {
 
-        char _tmp = std::getchar();
+        char tmp = std::getchar();
 
-        if((int)_tmp == 10)
+        if((int)tmp == 10)
             break;
 
-        _buffer[i] = _tmp;
-        _length++;
+        buffer[i] = tmp;
+        length++;
 
     }
 
-    return _length;
+    return length;
 
 }
 
-void PrintArray(int *_array, int _length) {
+void PrintArray(int *array, int length) {
 
     std::cout << "[";
-    for(int i = 0; i < _length; i++) {
+    for(int i = 0; i < length; i++) {
 
-        std::cout << _array[i] << ((i != _length-1) ? (", ") : (""));
+        std::cout << array[i] << ((i != length-1) ? (", ") : (""));
 
     }
     std::cout << "]" << std::endl;
 
 }
 
-void ShuffleArray(int *_array, int _length) {
+void ShuffleArray(int *array, int length) {
 
-    for(int i = 0; i < _length; i++)
-        _array[i] = _array[Random(0,_length-1)];
+    for(int i = 0; i < length; i++)
+        array[i] = array[Random(0, length-1)];
 
-
-}
-
-void CopyArray(char *_arrayCopy, char *_arrayBase, int _length) {
-
-    for(int i = 0; i < _length; i++)
-        _arrayCopy[i] = _arrayBase[i];
 
 }
 
-int MaxIndex(int *_array, int _length) {
+void CopyArray(char *arrayCopy, char *arrayBase, int length) {
+
+    for(int i = 0; i < length; i++)
+        arrayCopy[i] = arrayBase[i];
+
+}
+
+int MaxIndex(int *array, int length) {
 
     int index = 0;
 
-    for(int i = 1; i < _length; i++) 
-        if(_array[i] > _array[index])
+    for(int i = 1; i < length; i++) 
+        if(array[i] >array[index])
             index = i;
 
     return index;
 
 }
 
-int MaxValue(int *_array, int _length) {
+int MaxValue(int *array, int length) {
 
-    int _max = _array[0];
-    for(int i = 1; i < _length; i++) 
-        if(_array[i] > _max)
-            _max = _array[i];
+    int max = array[0];
+    for(int i = 1; i < length; i++) 
+        if( array[i] > max)
+            max = array[i];
 
-    return _max;
+    return max;
 
 }
 
